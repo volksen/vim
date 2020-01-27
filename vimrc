@@ -142,16 +142,6 @@ nmap <C-Down> <C-e>
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
-"{{{--------------------------- tabularize
-if exists(":Tabularize")
-	nmap <Leader>a= :Tabularize /=<CR>
-	vmap <Leader>a= :Tabularize /=<CR>
-	nmap <Leader>a: :Tabularize /:\zs<CR>
-	vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
-"}}}
-
-
 "------------------------------- gundo
 "nnoremap <leader>u :GundoToggle<CR>
 
@@ -269,9 +259,9 @@ map <C-9> 9gt
 map <C-0> :tablast<CR>
 
 "------------------------------- clipboard interaction
-if has('unnamedplus')
-	set clipboard=unnamed,unnamedplus
-endif
+"if has('unnamedplus')
+"	set clipboard=unnamed,unnamedplus
+"endif
 
 " NERDTree File explorere
 "map <F2> :NERDTreeToggle<CR>
