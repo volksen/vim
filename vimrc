@@ -7,6 +7,29 @@ filetype plugin indent on
 " Ctrl-u clears any command in command mode before calling FZF
 nnoremap <C-p> :<C-u>FZF<CR>
 
+"-------------------- grepper
+let g:grepper = {}
+let g:grepper.tools = ['rg', 'grep', 'git']
+" Search for the current word
+nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+" Search for the current selection
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+"set grepprg=rg\ -H\ --no-heading\ --vimgrep
+"set grepformat=$f:$l:%c:%m
+
+function! SetupCommandAlias(input, output)
+	exec 'cabbrev <expr> '.a:input
+		\ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:input.'")'
+		\ .'? ("'.a:output.'") : ("'.a:input.'"))'
+endfunction
+call SetupCommandAlias("grep", "GrepperGrep")
+call SetupCommandAlias("rg", "GrepperRg")
+
+" Open Grepper-prompt for a particular grep-alike tool
+"nnoremap <Leader>g :Grepper -tool rg<CR>
+nnoremap <Leader>G :Grepper -tool git<CR>
 
 "------------------------ vim specific settings
 set nocompatible					" Vim Mode, no vi compatibility
@@ -55,8 +78,8 @@ cnoremap <C-n> <Down>
 
 "--------------------- clear hlsearch
 " Use <C-L> to clear the highlighting of :set hlsearch. (Ctrl-L redraws screen)
-if maparg('<C-L>', 'n') ==# ''
-	nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+if maparg('<C-l>', 'n') ==# ''
+	nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 endif
 
 set diffopt+=vertical
