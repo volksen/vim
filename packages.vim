@@ -1,5 +1,6 @@
-command! PackUpdate packadd minpac | source $MYVIMRC | redraw | call minpac#update()
+command! PackUpdate packadd minpac | source $MYVIMRC | redraw | call minpac#update('', {'do': 'call minpac#status()'})
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
 
 if !exists('*minpac#init')
   finish
@@ -21,7 +22,7 @@ call minpac#add('nelstrom/vim-visual-star-search')
 call minpac#add('mhinz/vim-grepper')
 call minpac#add('godlygeek/tabular')
 call minpac#add('preservim/nerdtree') 
-call minpac#add('junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'} )
+call minpac#add('junegunn/fzf')
 call minpac#add('junegunn/fzf.vim')
 call minpac#add('dracula/vim', {'name':'dracula'})
 call minpac#add('junegunn/seoul256.vim')
