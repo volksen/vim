@@ -64,7 +64,7 @@ set wildmenu                    " menu tab completion
 "set wildmode=longest,list,full  " how to do tab completion, like bash
 set wildmode=full				" like fish
 set nu                          " line numbers
-colorscheme seoul256
+"colorscheme seoul256
 syntax on           " syntax highlighting
 set nocursorline
 set ignorecase      " search ignore case
@@ -228,7 +228,9 @@ function! Preserve(command)
 	let @/=_s
 	call cursor(l, c)
 endfunction
+" removes trailing whitespace in buffer
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+" indents whole buffer
 nmap _= :call Preserve("normal gg=G")<CR>
 
 "------------------------------- ident with ctrl+cursor keys
