@@ -18,7 +18,20 @@ xmap gs <plug>(GrepperOperator)
 
 "set grepprg=rg\ -H\ --no-heading\ --vimgrep
 "set grepformat=$f:$l:%c:%m
+ 
+"----------------------- WSL copy test                                                                            
+" WSL yank support                                                                                                
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " default location                                               
+if executable(s:clip)                                                                                             
+    augroup WSLYank                                                                                               
+        autocmd!                                                                                                  
+        autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)  
+    augroup END                                                                                                   
+end                                                                                                               
 
+set nobackup      
+set writebackup 
+ 
 function! SetupCommandAlias(input, output)
 	exec 'cabbrev <expr> '.a:input
 		\ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:input.'")'
@@ -34,11 +47,6 @@ nnoremap <Leader>G :Grepper -tool git<CR>
 "------------------------ vim specific settings
 set nocompatible					" Vim Mode, no vi compatibility
 set backspace=indent,eol,start		" backspace over everything in VIM
-if has("vms")
-	set nobackup	" do not keep a backup file, use versions instead
-else
-	set backup		" keep a backup file
-endif
 set history=1550		" keep more lines of command line history
 set ruler				" show line, columns, percentages in status bar
 set showcmd				" display incomplete commands in status bar
@@ -351,3 +359,6 @@ noremap <Right> <Nop>
 "else
 "	set autoindent		" autoindenting on (keeps indent across lines when pressing enter)
 "endif " has("autocmd")
+
+let g:markdown_fenced_languages = ['python','css', 'erb=eruby', 'javascript', 'bash=sh', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml']
+
