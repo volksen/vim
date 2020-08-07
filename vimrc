@@ -72,7 +72,14 @@ set wildmenu                    " menu tab completion
 "set wildmode=longest,list,full  " how to do tab completion, like bash
 set wildmode=full				" like fish
 set nu                          " line numbers
-colorscheme seoul256
+
+try
+  colorscheme  seoul256
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  set background=dark
+endtry
+
 syntax on           " syntax highlighting
 set nocursorline
 set ignorecase      " search ignore case
