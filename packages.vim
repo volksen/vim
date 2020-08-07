@@ -1,30 +1,39 @@
-command! PackUpdate packadd minpac | source $MYVIMRC | redraw | call minpac#update('', {'do': 'call minpac#status()'})
-command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
-command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
-
-if !exists('*minpac#init')
-  finish
+" load vimplug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call minpac#init()
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-"------------------- plugins
-call minpac#add('k-takata/minpac', {'type': 'opt'})
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'mhinz/vim-grepper'
+Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'dracula/vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/vim-peekaboo'
 
-call minpac#add('tpope/vim-unimpaired')
-call minpac#add('tpope/vim-surround')
-call minpac#add('tpope/vim-obsession')
-call minpac#add('tpope/vim-fugitive')
-call minpac#add('tpope/vim-abolish') 
-call minpac#add('tpope/vim-commentary') 
-call minpac#add('tpope/vim-repeat') 
-call minpac#add('nelstrom/vim-visual-star-search')
-call minpac#add('mhinz/vim-grepper')
-call minpac#add('godlygeek/tabular')
-call minpac#add('preservim/nerdtree') 
-call minpac#add('junegunn/fzf')
-call minpac#add('junegunn/fzf.vim')
-call minpac#add('dracula/vim', {'name':'dracula'})
-call minpac#add('junegunn/seoul256.vim')
-"call minpac#add('junegunn/vim-peekaboo')
+Plug 'junegunn/vim-easy-align'
+Plug 'godlygeek/tabular'
 
+Plug 'SirVer/ultisnips' 
+Plug 'honza/vim-snippets'
+
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Initialize plugin system
+call plug#end()

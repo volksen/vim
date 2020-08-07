@@ -72,7 +72,7 @@ set wildmenu                    " menu tab completion
 "set wildmode=longest,list,full  " how to do tab completion, like bash
 set wildmode=full				" like fish
 set nu                          " line numbers
-"colorscheme seoul256
+colorscheme seoul256
 syntax on           " syntax highlighting
 set nocursorline
 set ignorecase      " search ignore case
@@ -297,8 +297,8 @@ map <C-0> :tablast<CR>
 "endif
 
 " NERDTree File explorere
-"map <F2> :NERDTreeToggle<CR>
-"map <F3> :NERDTreeFind<CR>
+map <F2> :NERDTreeToggle<CR>
+map <F3> :NERDTreeFind<CR>
 "let NERDTreeHijackNetrw=0
 
 "-------------------- path to current file
