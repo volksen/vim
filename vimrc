@@ -349,7 +349,11 @@ noremap <Right> <Nop>
 "call minpac#add('k-takata/minpac', {'type': 'opt'})
 "call minpac#add('tpope/vim-unimpaired')
 
+"Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
 
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "---- jump to last edit location when opening a file
 "if has("autocmd")

@@ -14,6 +14,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-fugitive'
+"Plug 'wmvanvliet/jupyter-vim'
+Plug 'goerz/jupytext.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
@@ -27,7 +29,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-easy-align'
 Plug 'godlygeek/tabular'
 
-Plug 'SirVer/ultisnips' 
+"Plug 'SirVer/ultisnips' 
 Plug 'honza/vim-snippets'
 
 " Plugin outside ~/.vim/plugged with post-update hook
